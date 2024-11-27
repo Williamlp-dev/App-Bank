@@ -23,8 +23,8 @@ export default function Extrato() {
         { id: 1, name: 'AirBnB Rent', date: '21:02 AM', amount: 50.00, icon: 'home' as IconName },
         { id: 2, name: 'Netflix', date: '9:12 AM', amount: 15.00, icon: 'subscriptions' as IconName },
         { id: 3, name: 'Spotify', date: '13:42 AM', amount: 9.99, icon: 'music-note' as IconName },
-        { id: 4, name: 'Amazon Purchase', date: '12:35 AM', amount: 120.50, icon: 'shopping-cart' as IconName },
-        { id: 5, name: 'Online Shopping', date: '4:54 AM', amount: 45.00, icon: 'shopping-bag' as IconName },
+        { id: 4, name: 'Amazon Purchase', date: '12:35 AM', amount: -120.50, icon: 'shopping-cart' as IconName },
+        { id: 5, name: 'Online Shopping', date: '4:54 AM', amount: -45.00, icon: 'shopping-bag' as IconName },
         { id: 6, name: 'Utility Bill', date: '2:31 AM', amount: -60.00, icon: 'electric-bolt' as IconName },
     ];
 
@@ -82,7 +82,7 @@ export default function Extrato() {
                 </View>
 
                 <View style={styles.servicesContainer}>
-                    <Text style={styles.TextHeader}>July 30, 2024</Text>
+                    <Text style={styles.TextHeader}>Julho 30, 2024</Text>
                 </View>
 
                 <View style={styles.transactionsContainer}>
@@ -99,9 +99,9 @@ export default function Extrato() {
                                 <Text style={styles.transactionAmount}>
                                     {typeof item.amount === 'number'
                                         ? (item.amount < 0
-                                            ? `- $${Math.abs(item.amount).toFixed(2)}`
-                                            : `$${item.amount.toFixed(2)}`)
-                                        : `$${item.amount}`}
+                                            ? `EC ${Math.abs(item.amount).toFixed(2)} -`
+                                            : `EC ${item.amount.toFixed(2)}`)
+                                        : `EC ${item.amount}`}
                                 </Text>
                             </View>
                         </View>

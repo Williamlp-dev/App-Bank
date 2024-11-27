@@ -26,7 +26,7 @@ export default function Success() {
             </View>
             <Image source={Successimg} style={style.image} />
 
-            <Text style={style.title}>Sucessful!!</Text>
+            <Text style={style.title}>Sucessful!</Text>
 
             <Text style={style.description}>
                 Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos

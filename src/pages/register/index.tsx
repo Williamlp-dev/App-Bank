@@ -1,25 +1,64 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { RootStackParamList } from "@/src/navigation/types";
 import { styles } from "./styles";
 import { Back, Arrow } from "@/src/constants/Icons";
+import { User } from "@/src/navigation/users"; // Ajuste o caminho conforme necessário
+
+
 
 type RegisterNavigationProp = StackNavigationProp<RootStackParamList, "Register">;
 
-export default function Register() {
+const Register = () => {
     const navigation = useNavigation<RegisterNavigationProp>();
+    const [nome, setNome] = useState("");
+    const [cpf, setCpf] = useState("");
+    const [dataNascimento, setDataNascimento] = useState("");
+    const [email, setEmail] = useState("");
+    const [senha, setSenha] = useState("");
 
-    const [nome, setNome] = useState('');
-    const [cpf, setCpf] = useState('');
-    const [dataNascimento, setDataNascimento] = useState('');
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+    const handleRegister = async () => {
+        if (!nome || !cpf || !dataNascimento || !email || !senha) {
+            Alert.alert("Atenção", "Preencha todos os campos!");
+            return;
+        }
 
-    const handleRegister = () => {
-        console.log('Usuário registrado:', { nome, cpf, dataNascimento, email, senha });
-        navigation.navigate("Success");
+        try {
+            // Verifica se o usuário já existe
+            const existingUser: string | null = await AsyncStorage.getItem(`user_${cpf}`);
+            if (existingUser) {
+                Alert.alert("Erro", "Usuário já existe!");
+                return;
+            }
+
+            // Criação do objeto do usuário
+            const user: User = {
+                nome,
+                cpf,
+                dataNascimento,
+                email,
+                senha,
+            };
+
+            // Armazena o usuário com a chave baseada no CPF
+            await AsyncStorage.setItem(`user_${cpf}`, JSON.stringify(user));
+
+            // Atualiza a lista global de CPFs
+            const userList: string[] = JSON.parse((await AsyncStorage.getItem("users")) || "[]");
+            if (!userList.includes(cpf)) {
+                userList.push(cpf);
+                await AsyncStorage.setItem("users", JSON.stringify(userList));
+            }
+
+            Alert.alert("Sucesso", "Usuário registrado!");
+            navigation.navigate("Success" as never);
+        } catch (error) {
+            console.error("Erro ao registrar usuário:", error);
+            Alert.alert("Erro", "Ocorreu um erro ao tentar registrar o usuário.");
+        }
     };
 
     const goBack = () => {
@@ -35,7 +74,7 @@ export default function Register() {
 
                 <Text style={styles.registerTitle}>Register</Text>
                 <Text style={styles.description}>
-                    Create an account to access your personalized financial solutions.
+                    Crie uma conta para acessar suas soluções financeiras personalizadas.
                 </Text>
             </View>
 
@@ -60,7 +99,6 @@ export default function Register() {
                     placeholder="Data de Nascimento"
                     value={dataNascimento}
                     onChangeText={setDataNascimento}
-                    keyboardType="numeric"
                     placeholderTextColor="#A7A5A5"
                 />
                 <TextInput
@@ -82,9 +120,11 @@ export default function Register() {
             </View>
 
             <TouchableOpacity style={styles.signUpButton} onPress={handleRegister}>
-                <Text style={styles.signUpButtonText}>Sign Up</Text>
+                <Text style={styles.signUpButtonText}>Registrar</Text>
                 <Arrow style={styles.arrowIcon} />
             </TouchableOpacity>
         </View>
     );
-}
+};
+
+export default Register;

@@ -28,15 +28,23 @@ export const style = StyleSheet.create({
     header: {
         flexDirection: "row",
         alignItems: "center",
+        justifyContent: "space-between",
+        width: "100%",
         marginTop: 20,
         marginBottom: 20,
     },
+
+    headerText: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+
 
     profileImage: {
         width: 50,
         height: 50,
         borderRadius: 25,
-        marginRight: 15,
+        marginRight: '5%',
     },
 
     greetingText: {
@@ -60,8 +68,8 @@ export const style = StyleSheet.create({
     balanceContainer: {
         marginTop: 20,
         marginBottom: 20,
-        alignItems: "center",
-        justifyContent: "center"
+        alignItems: "flex-start",
+        justifyContent: "center",
     },
 
     balanceText: {
@@ -113,8 +121,9 @@ export const style = StyleSheet.create({
         width: "100%",
         paddingHorizontal: 20,
         flex: 1,
-        justifyContent: "space-between",
+        justifyContent: "space-evenly",
         paddingBottom: 20,
+
     },
 
     bottomButton: {
@@ -124,9 +133,8 @@ export const style = StyleSheet.create({
         backgroundColor: Color.grayAlt,
         borderRadius: 10,
         paddingVertical: 10,
-        marginBottom: 15,
         width: "100%",
-        height: 52.51,
+        height: "18%",
     },
 
     buttonLabel: {
@@ -139,5 +147,35 @@ export const style = StyleSheet.create({
 
     iconStyle: {
         marginRight: 10,
+        marginLeft: 10,
     },
+
+    scannerContainer: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "rgba(0,0,0,0.8)",
+    },
+    scanner: {
+        width: "90%",
+        height: "70%",
+    },
+    closeButton: {
+        marginTop: 20,
+        padding: 10,
+        backgroundColor: "#ff4d4d",
+        borderRadius: 5,
+    },
+    closeButtonText: {
+        color: "white",
+        fontWeight: "bold",
+        fontSize: 16,
+    },
+    closeBtn: {
+        position: "absolute",
+        bottom: 32,
+        left: 32,
+        right: 32,
+    },
+
 });

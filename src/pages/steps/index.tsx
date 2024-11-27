@@ -13,7 +13,7 @@ type GetStartNavigationProp = StackNavigationProp<RootStackParamList, "GetStart"
 export default function Steps() {
     const navigation = useNavigation<GetStartNavigationProp>();
 
-    const goToNextScreen = (screen: keyof RootStackParamList) => {
+    const goToNextScreen = (screen: "Login" | "Register") => {
         navigation.navigate(screen);
     };
 
@@ -24,10 +24,10 @@ export default function Steps() {
             </View>
             <Image source={StepImage} style={style.image} />
 
-            <Text style={style.title}>Solutions to support Financial activities</Text>
+            <Text style={style.title}>Ainda não tem uma conta? Registre-se</Text>
 
             <Text style={style.description}>
-                Reliable to save balance & transactions ideally
+                Já tem uma conta? Faça login
             </Text>
 
             <View style={style.buttonContainer}>

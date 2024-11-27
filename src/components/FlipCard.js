@@ -50,7 +50,7 @@ export function FlipCard() {
                             <Text style={styles.heading}>ECO CARD</Text>
                             <Image source={chipImage} style={styles.chip} />
                             <Image source={LogoCardAlt} style={styles.contactless} />
-                            <Text style={styles.name}>Otavio Balelas</Text>
+                            <Text style={styles.name}>Admin</Text>
                         </View>
                     </Animated.View>
 

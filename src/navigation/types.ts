@@ -3,9 +3,11 @@ export type RootStackParamList = {
     Steps: undefined;
     Register: undefined;
     Login: undefined;
-    Success: undefined;
+    Success: { user: string };
+    Profile: { user: string };
     Home: undefined;
-    HomeTabs: undefined;
+    HomeTabs: { user: string };
     Card: undefined;
-
+    ViewUsers: undefined;
 };
+

@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import Routes from './src/routes/index.routes';
 import { NavigationContainer } from '@react-navigation/native'
+import { SQLiteProvider, useSQLiteContext, type SQLiteDatabase } from 'expo-sqlite';
 import Color from './src/constants/Color';
 
 

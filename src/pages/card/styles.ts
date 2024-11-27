@@ -13,6 +13,16 @@ export const styles = StyleSheet.create({
         backgroundColor: Color.BgColor,
     },
 
+    modalContainer: {
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Fundo escuro para dar destaque ao modal
+    },
+    cameraView: {
+        flex: 1,
+        width: '100%', // Garantir que a câmera ocupe toda a tela
+        height: '100%', // Garantir que a câmera ocupe toda a tela
+    },
+
     squareContainer: {
         marginTop: 20,
         marginBottom: 20,
@@ -111,6 +121,13 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '600',
     },
+    closeBtn: {
+        position: "absolute",
+        bottom: 32,
+        left: 32,
+        right: 32,
+    },
+
 
 
 });

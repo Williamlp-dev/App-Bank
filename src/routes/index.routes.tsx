@@ -12,6 +12,7 @@ import Sucess from "../pages/sucess";
 import Card from "../pages/card";
 import Profile from "../pages/perfil";
 import Extrato from "../pages/extrato";
+import ViewUsers from "../pages/users/index"
 import { RootStackParamList } from '../navigation/types';
 import Color from "../constants/Color";
 
@@ -23,10 +24,10 @@ function HomeTabs() {
         <Tab.Navigator
             initialRouteName="HomeTab"
             screenOptions={{
-                tabBarActiveTintColor: Color.tintColor,
+                tabBarActiveTintColor: "#839FF9",
                 tabBarInactiveTintColor: 'gray',
                 tabBarStyle: {
-                    backgroundColor: '#212121',
+                    backgroundColor: Color.grayAlt,
                     borderTopWidth: 0,
                     height: 90,
                     paddingBottom: 10,
@@ -47,7 +48,7 @@ function HomeTabs() {
                 name="HomeTab"
                 component={Home}
                 options={{
-                    tabBarLabel: 'Home',
+                    tabBarLabel: 'Início',
                     tabBarIcon: ({ color, size }) => (
                         <Octicons name="home" size={24} color={color} />
                     ),
@@ -249,6 +250,24 @@ export default function Routes() {
             <Stack.Screen
                 name="Success"
                 component={Sucess}
+                options={{
+                    cardStyleInterpolator: ({ current, layouts }) => {
+                        const translateX = current.progress.interpolate({
+                            inputRange: [0, 1],
+                            outputRange: [layouts.screen.width, 0],
+                        });
+                        return {
+                            cardStyle: {
+                                opacity: current.progress,
+                                transform: [{ translateX }],
+                            },
+                        };
+                    },
+                }}
+            />
+            <Stack.Screen
+                name="ViewUsers"
+                component={ViewUsers}
                 options={{
                     cardStyleInterpolator: ({ current, layouts }) => {
                         const translateX = current.progress.interpolate({

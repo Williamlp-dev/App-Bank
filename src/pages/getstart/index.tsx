@@ -24,7 +24,7 @@ export default function GetStart() {
             </View>
             <Onboarding />
             <TouchableOpacity style={style.button} onPress={goToNextScreen}>
-                <Text style={style.buttonText}>Get Started</Text>
+                <Text style={style.buttonText}>Comece Agora </Text>
                 <Arrow width={20} />
             </TouchableOpacity>
         </View>
